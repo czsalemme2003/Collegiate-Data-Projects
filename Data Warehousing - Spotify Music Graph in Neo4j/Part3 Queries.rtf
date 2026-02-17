@@ -1,0 +1,95 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2708
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red249\green180\blue58;
+\red194\green192\blue180;\red243\green77\blue51;\red253\green151\blue130;\red193\green191\blue181;\red0\green0\blue0;
+\red0\green0\blue0;\red255\green255\blue255;\red252\green182\blue61;\red193\green191\blue181;\red127\green195\blue78;
+\red244\green78\blue53;\red253\green152\blue132;\red129\green223\blue227;\red0\green0\blue0;\red252\green183\blue62;
+\red193\green191\blue181;\red127\green195\blue79;\red253\green152\blue132;\red244\green79\blue54;\red193\green191\blue181;
+}
+{\*\expandedcolortbl;;\cssrgb\c0\c1\c1;\cssrgb\c100000\c100000\c100000\c0;\cssrgb\c98709\c75184\c28824;
+\cssrgb\c80477\c79668\c75829;\cssrgb\c97200\c39548\c25754;\cssrgb\c100000\c66506\c58180;\cssrgb\c80070\c79282\c76045;\cssrgb\c0\c1\c1;
+\cssrgb\c0\c1\c1;\cssrgb\c100000\c100000\c99985\c0;\cssrgb\c99453\c76150\c30286;\cssrgb\c80207\c79413\c75976;\cssrgb\c56208\c79302\c37827;
+\cssrgb\c97460\c40036\c26729;\cssrgb\c100000\c66603\c58777;\cssrgb\c56464\c89489\c91239;\cssrgb\c0\c0\c0;\cssrgb\c99636\c76389\c30649;
+\cssrgb\c80139\c79348\c76010;\cssrgb\c56296\c79405\c38029;\cssrgb\c100000\c66625\c58924;\cssrgb\c97524\c40156\c26971;\cssrgb\c80000\c79216\c76078;
+}
+\margl1440\margr1440\vieww17680\viewh7800\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 CREATE\cf2 \strokec5  \cf2 \strokec4 CONSTRAINT\cf2 \strokec5  track_id_unique \cf2 \strokec4 IF\cf2 \strokec5  \cf2 \strokec4 NOT\cf2 \strokec5  \cf2 \strokec4 EXISTS\cf2 \strokec5 \
+\cf2 \strokec4 FOR\cf2 \strokec5  (t\cf2 \strokec4 :\cf2 \strokec6 Track\cf2 \strokec5 )\
+\cf2 \strokec4 REQUIRE\cf2 \strokec5  t\cf2 \strokec4 .\cf2 \strokec7 track_id\cf2 \strokec5  \cf2 \strokec4 IS\cf2 \strokec5  \cf2 \strokec4 UNIQUE\cf2 \strokec5 ;\
+\
+\cf2 \strokec4 CREATE\cf2 \strokec5  \cf2 \strokec4 CONSTRAINT\cf2 \strokec5  artist_name_unique \cf2 \strokec4 IF\cf2 \strokec5  \cf2 \strokec4 NOT\cf2 \strokec5  \cf2 \strokec4 EXISTS\cf2 \strokec5 \
+\cf2 \strokec4 FOR\cf2 \strokec5  (a\cf2 \strokec4 :\cf2 \strokec6 Artist\cf2 \strokec5 )\
+\cf2 \strokec4 REQUIRE\cf2 \strokec5  a\cf2 \strokec4 .\cf2 \strokec7 name\cf2 \strokec5  \cf2 \strokec4 IS\cf2 \strokec5  \cf2 \strokec4 UNIQUE\cf2 \strokec5 ;\
+\
+\cf2 \strokec4 CREATE\cf2 \strokec5  \cf2 \strokec4 CONSTRAINT\cf2 \strokec5  album_name_unique \cf2 \strokec4 IF\cf2 \strokec5  \cf2 \strokec4 NOT\cf2 \strokec5  \cf2 \strokec4 EXISTS\cf2 \strokec5 \
+\cf2 \strokec4 FOR\cf2 \strokec5  (al\cf2 \strokec4 :\cf2 \strokec6 Album\cf2 \strokec5 )\
+\cf2 \strokec4 REQUIRE\cf2 \strokec5  al\cf2 \strokec4 .\cf2 \strokec7 name\cf2 \strokec5  \cf2 \strokec4 IS\cf2 \strokec5  \cf2 \strokec4 UNIQUE\cf2 \strokec5 ;\
+\
+\cf2 \strokec4 CREATE\cf2 \strokec5  \cf2 \strokec4 CONSTRAINT\cf2 \strokec5  genre_name_unique \cf2 \strokec4 IF\cf2 \strokec5  \cf2 \strokec4 NOT\cf2 \strokec5  \cf2 \strokec4 EXISTS\cf2 \strokec5 \
+\cf2 \strokec4 FOR\cf2 \strokec5  (g\cf2 \strokec4 :\cf2 \strokec6 Genre\cf2 \strokec5 )\
+\cf2 \strokec4 REQUIRE\cf2 \strokec5  g\cf2 \strokec4 .\cf2 \strokec7 name\cf2 \strokec5  \cf2 \strokec4 IS\cf2 \strokec5  \cf2 \strokec4 UNIQUE\cf2 \strokec5 ;\cf8 \cb9 \strokec8 \
+\cf2 \cb3 \strokec4 \
+\
+\
+\cf10 \cb11 \strokec12 LOAD\cf10 \cb11 \strokec13  \cf10 \cb11 \strokec12 CSV\cf10 \cb11 \strokec13  \cf10 \cb11 \strokec12 WITH\cf10 \cb11 \strokec13  \cf10 \cb11 \strokec12 HEADERS\cf10 \cb11 \strokec13  \cf10 \cb11 \strokec12 FROM\cf10 \cb11 \strokec13  \cf10 \cb11 \strokec14 'file:///tracks.csv'\cf10 \cb11 \strokec13  \cf10 \cb11 \strokec12 AS\cf10 \cb11 \strokec13  row\
+\cf10 \cb11 \strokec12 MERGE\cf10 \cb11 \strokec13  (t\cf10 \cb11 \strokec12 :\cf10 \cb11 \strokec15 Track\cf10 \cb11 \strokec13  \{\cf10 \cb11 \strokec16 track_id\cf10 \cb11 \strokec12 :\cf10 \cb11 \strokec13  row\cf10 \cb11 \strokec12 .\cf10 \cb11 \strokec16 track_id\cf10 \cb11 \strokec13 \})\
+\cf10 \cb11 \strokec12 SET\cf10 \cb11 \strokec13  t\cf10 \cb11 \strokec12 .\cf10 \cb11 \strokec16 track_name\cf10 \cb11 \strokec13  \cf10 \cb11 \strokec12 =\cf10 \cb11 \strokec13  row\cf10 \cb11 \strokec12 .\cf10 \cb11 \strokec16 track_name\cf10 \cb11 \strokec13 ,\
+t\cf10 \cb11 \strokec12 .\cf10 \cb11 \strokec16 popularity\cf10 \cb11 \strokec13  \cf10 \cb11 \strokec12 =\cf10 \cb11 \strokec13  \cf10 \cb11 \strokec17 toInteger\cf10 \cb11 \strokec13 (row\cf10 \cb11 \strokec12 .\cf10 \cb11 \strokec16 popularity\cf10 \cb11 \strokec13 ),\
+t\cf10 \cb11 \strokec12 .\cf10 \cb11 \strokec16 danceability\cf10 \cb11 \strokec13  \cf10 \cb11 \strokec12 =\cf10 \cb11 \strokec13  \cf10 \cb11 \strokec17 toFloat\cf10 \cb11 \strokec13 (row\cf10 \cb11 \strokec12 .\cf10 \cb11 \strokec16 danceability\cf10 \cb11 \strokec13 ),\
+t\cf10 \cb11 \strokec12 .\cf10 \cb11 \strokec16 valence\cf10 \cb11 \strokec13  \cf10 \cb11 \strokec12 =\cf10 \cb11 \strokec13  \cf10 \cb11 \strokec17 toFloat\cf10 \cb11 \strokec13 (row\cf10 \cb11 \strokec12 .\cf10 \cb11 \strokec16 valence\cf10 \cb11 \strokec13 ),\
+t\cf10 \cb11 \strokec12 .\cf10 \cb11 \strokec16 acousticness\cf10 \cb11 \strokec13  \cf10 \cb11 \strokec12 =\cf10 \cb11 \strokec13  \cf10 \cb11 \strokec17 toFloat\cf10 \cb11 \strokec13 (row\cf10 \cb11 \strokec12 .\cf10 \cb11 \strokec16 acousticness\cf10 \cb11 \strokec13 ),\
+t\cf10 \cb11 \strokec12 .\cf10 \cb11 \strokec16 album_name\cf10 \cb11 \strokec13  \cf10 \cb11 \strokec12 =\cf10 \cb11 \strokec13  row\cf10 \cb11 \strokec12 .\cf10 \cb11 \strokec16 album_name\cf10 \cb11 \strokec13 ,\
+t\cf10 \cb11 \strokec12 .\cf10 \cb11 \strokec16 track_genre\cf10 \cb11 \strokec13  \cf10 \cb11 \strokec12 =\cf10 \cb11 \strokec13  row\cf10 \cb11 \strokec12 .\cf10 \cb11 \strokec16 track_genre\cf10 \cb11 \strokec13 ,\
+t\cf10 \cb11 \strokec12 .\cf10 \cb11 \strokec16 artists_raw\cf10 \cb11 \strokec13  \cf10 \cb11 \strokec12 =\cf10 \cb11 \strokec13  row\cf10 \cb11 \strokec12 .\cf10 \cb11 \strokec16 artists\cf10 \cb11 \strokec13 ;\cf10 \cb11 \strokec12 \
+\
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf18 \cb3 \strokec19 LOAD\strokec20  \strokec19 CSV\strokec20  \strokec19 WITH\strokec20  \strokec19 HEADERS\strokec20  \strokec19 FROM\strokec20  \strokec21 'file:///artists.csv'\strokec20  \strokec19 AS\strokec20  row\
+\strokec19 WITH\strokec20  row \strokec19 WHERE\strokec20  row\strokec19 .\strokec22 name\strokec20  \strokec19 IS\strokec20  \strokec19 NOT\strokec20  \strokec19 NULL\strokec20  \strokec19 AND\strokec20  row\strokec19 .\strokec22 name\strokec20  \strokec19 <>\strokec20  \strokec21 ""\strokec20 \
+\strokec19 MERGE\strokec20  (a\strokec19 :\strokec23 Artist\strokec20  \{\strokec22 name\strokec19 :\strokec20  row\strokec19 .\strokec22 name\strokec20 \});\
+\pard\pardeftab720\partightenfactor0
+\cf18 \strokec20 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf18 \strokec19 LOAD\strokec20  \strokec19 CSV\strokec20  \strokec19 WITH\strokec20  \strokec19 HEADERS\strokec20  \strokec19 FROM\strokec20  \strokec21 'file:///albums.csv'\strokec20  \strokec19 AS\strokec20  row\
+\strokec19 WITH\strokec20  row \strokec19 WHERE\strokec20  row\strokec19 .\strokec22 name\strokec20  \strokec19 IS\strokec20  \strokec19 NOT\strokec20  \strokec19 NULL\strokec20  \strokec19 AND\strokec20  row\strokec19 .\strokec22 name\strokec20  \strokec19 <>\strokec20  \strokec21 ""\strokec20 \
+\strokec19 MERGE\strokec20  (al\strokec19 :\strokec23 Album\strokec20  \{\strokec22 name\strokec19 :\strokec20  row\strokec19 .\strokec22 name\strokec20 \});\
+\pard\pardeftab720\partightenfactor0
+\cf18 \strokec20 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf18 \strokec19 LOAD\strokec20  \strokec19 CSV\strokec20  \strokec19 WITH\strokec20  \strokec19 HEADERS\strokec20  \strokec19 FROM\strokec20  \strokec21 'file:///genres.csv'\strokec20  \strokec19 AS\strokec20  row\
+\strokec19 WITH\strokec20  row \strokec19 WHERE\strokec20  row\strokec19 .\strokec22 name\strokec20  \strokec19 IS\strokec20  \strokec19 NOT\strokec20  \strokec19 NULL\strokec20  \strokec19 AND\strokec20  row\strokec19 .\strokec22 name\strokec20  \strokec19 <>\strokec20  \strokec21 ""\strokec20 \
+\strokec19 MERGE\strokec20  (g\strokec19 :\strokec23 Genre\strokec20  \{\strokec22 name\strokec19 :\strokec20  row\strokec19 .\strokec22 name\strokec20 \});\
+\pard\pardeftab720\partightenfactor0
+\cf18 \strokec20 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf18 \strokec19 LOAD\strokec20  \strokec19 CSV\strokec20  \strokec19 WITH\strokec20  \strokec19 HEADERS\strokec20  \strokec19 FROM\strokec20  \strokec21 'file:///rel_performed_by.csv'\strokec20  \strokec19 AS\strokec20  row\
+\strokec19 MATCH\strokec20  (t\strokec19 :\strokec23 Track\strokec20  \{\strokec22 track_id\strokec19 :\strokec20  row\strokec19 .\strokec22 track_id\strokec20 \})\
+\strokec19 MATCH\strokec20  (a\strokec19 :\strokec23 Artist\strokec20  \{\strokec22 name\strokec19 :\strokec20  row\strokec19 .\strokec22 artist_name\strokec20 \})\
+\strokec19 MERGE\strokec20  (t)-[\strokec19 :\strokec23 PERFORMED_BY\strokec20 ]->(a);\
+\pard\pardeftab720\partightenfactor0
+\cf18 \strokec20 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf18 \strokec19 LOAD\strokec20  \strokec19 CSV\strokec20  \strokec19 WITH\strokec20  \strokec19 HEADERS\strokec20  \strokec19 FROM\strokec20  \strokec21 'file:///rel_belongs_to.csv'\strokec20  \strokec19 AS\strokec20  row\
+\strokec19 MATCH\strokec20  (t\strokec19 :\strokec23 Track\strokec20  \{\strokec22 track_id\strokec19 :\strokec20  row\strokec19 .\strokec22 track_id\strokec20 \})\
+\strokec19 MATCH\strokec20  (al\strokec19 :\strokec23 Album\strokec20  \{\strokec22 name\strokec19 :\strokec20  row\strokec19 .\strokec22 album_name\strokec20 \})\
+\strokec19 MERGE\strokec20  (t)-[\strokec19 :\strokec23 BELONGS_TO\strokec20 ]->(al);\
+\pard\pardeftab720\partightenfactor0
+\cf18 \strokec20 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf18 \strokec19 LOAD\strokec20  \strokec19 CSV\strokec20  \strokec19 WITH\strokec20  \strokec19 HEADERS\strokec20  \strokec19 FROM\strokec20  \strokec21 'file:///rel_has_genre.csv'\strokec20  \strokec19 AS\strokec20  row\
+\strokec19 MATCH\strokec20  (t\strokec19 :\strokec23 Track\strokec20  \{\strokec22 track_id\strokec19 :\strokec20  row\strokec19 .\strokec22 track_id\strokec20 \})\
+\strokec19 MATCH\strokec20  (g\strokec19 :\strokec23 Genre\strokec20  \{\strokec22 name\strokec19 :\strokec20  row\strokec19 .\strokec22 track_genre\strokec20 \})\
+\strokec19 MERGE\strokec20  (t)-[\strokec19 :\strokec23 HAS_GENRE\strokec20 ]->(g);\cf24 \cb1 \strokec24 \
+\pard\pardeftab720\partightenfactor0
+\cf24 \
+}

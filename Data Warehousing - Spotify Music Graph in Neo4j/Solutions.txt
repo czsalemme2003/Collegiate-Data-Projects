@@ -1,0 +1,165 @@
+# Task 1: Highly Popular Tracks
+
+MATCH (t:Track)
+WHERE t.popularity > 80
+RETURN
+t.track_name AS track_name,
+t.popularity AS popularity
+ORDER BY popularity DESC
+LIMIT 20;
+
+Execution Times:
+#1. 30ms
+#2. 45ms
+#3. 39ms
+#4. 38ms
+#5. 36ms
+#6. 112ms
+#7. 54ms
+#8. 50ms
+#9. 33ms
+#10. 33ms
+
+Average Execution Time: 47ms (470ms total / 10 )
+
+# Task 2: Tracks with “Love” or “Dream” in the Title
+
+MATCH (t:Track)
+WHERE toLower(t.track_name) CONTAINS "love"
+OR toLower(t.track_name) CONTAINS "dream"
+RETURN
+t.track_name AS track_name,
+t.popularity AS popularity
+ORDER BY popularity DESC
+
+Execution Times:
+#1. 478ms
+#2. 154ms
+#3. 111ms
+#4. 88ms
+#5. 198ms
+#6. 87ms
+#7. 205ms
+#8. 123ms
+#9. 85ms
+#10. 247ms
+
+Average Execution Time: 177.6ms (1776ms total / 10)
+
+# Task 3: Tracks by a Specific Artist
+
+MATCH (t:Track)-[:PERFORMED_BY]->(a:Artist)
+WHERE a.name = “The 1975”
+RETURN
+t.track_name AS track_name,
+t.popularity AS popularity
+ORDER BY popularity DESC;
+
+Execution Times
+#1. 5ms
+#2. 6ms
+#3. 11ms
+#4. 10ms
+#5. 55ms
+#6. 26ms
+#7. 5ms
+#8. 5ms
+#9. 4ms
+#10. 2ms
+
+#Average Execution Time: 12.9ms (129ms total / 10)
+
+# Task 4: Upbeat and Happy Tracks
+
+MATCH (t:Track)
+WHERE t.danceability > 0.7
+AND t.valence > 0.7
+AND t.popularity > 60
+RETURN
+t.track_name AS track_name,
+t.popularity AS popularity,
+t.danceability AS danceability,
+t.valence AS valence
+ORDER BY popularity DESC
+LIMIT 50;
+
+#Execution Times
+#1. 202ms
+#2. 50ms
+#3. 34ms
+#4. 46ms
+#5. 55ms
+#6. 39ms
+#7. 47ms
+#8. 41ms
+#9. 40ms
+#10. 38ms
+
+#Average Execution Time: 59.2ms (592ms total / 10)
+
+# Task 5: Update Track Name
+
+MATCH (a:Artist {name: "Jason Mraz"})
+SET a.name = "Jason M."
+RETURN a;
+
+#Execution Times
+#1. 172ms
+#2. 4ms
+#3. 3ms
+#4. 4ms
+#5. 9ms
+#6. 2ms
+#7. 5ms
+#8. 7ms
+#9. 4ms
+#10. 47ms
+
+#Average Execution Time: 21.7ms (217ms total / 10)
+
+# Task 6: Average Track Popularity by Genre
+
+MATCH (t:Track)-[:HAS_GENRE]->(g:Genre)
+WITH g.name AS genre, avg(t.popularity) AS avg_popularity
+RETURN genre, avg_popularity
+ORDER BY avg_popularity DESC
+LIMIT 50;
+
+#Execution Times
+#1. 345ms
+#2. 115ms
+#3. 102ms
+#4. 67ms
+#5. 70ms
+#6. 68ms
+#7. 71ms
+#8. 79ms
+#9. 72ms
+#10. 73ms
+
+#Average Execution Time: 106.2ms (1062ms total / 10)
+
+# Task 7: 
+MATCH (t:Track)-[:HAS_GENRE]->(g:Genre)
+WITH g.name AS genre, avg(t.popularity) AS avg_popularity
+RETURN genre, avg_popularity
+ORDER BY avg_popularity DESC
+LIMIT 50;
+
+#Execution Times
+#1. 178ms
+#2. 49ms
+#3. 59ms
+#4. 33ms
+#5. 28ms
+#6. 31ms
+#7. 24ms
+#8. 29ms
+#9. 27ms
+#10. 28ms
+
+#Average Execution Time: 48.6ms (486ms total / 10)
+
+
+
+
